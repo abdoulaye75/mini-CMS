@@ -8,7 +8,7 @@
 </head>
 <body>
 
-	<table class="table table-bordered table-responsive col-md-6">
+	<table class="table table-bordered table-striped table-responsive">
 		<thead>
 			<tr>
 				<th> Nom du plat </th>
