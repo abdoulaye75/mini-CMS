@@ -7,6 +7,14 @@
 	<link rel="stylesheet" type="text/css" href="../CSS/bootstrap/css/bootstrap.min.css">
 </head>
 <body>
+
+	<nav>
+		<ul>
+			<li> <a href="../index.php"> Retour à l'accueil </a> </li>
+			<li> <a href="articles.php"> Liste des articles </a> </li>
+		</ul>
+	</nav>
+
 	<div class="conteneur">
 		<h1 class="text-center"> S'inscrire </h1>
 		<form action="articles.php" method="post">
