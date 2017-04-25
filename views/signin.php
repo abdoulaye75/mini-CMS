@@ -33,21 +33,18 @@
       </div>
     </nav>
 
-<div class="conteneur">
-		<h1 class="text-center"> Se connecter </h1>
-		<form action="articles.php" method="post">
-			<div class="form-group">
-				<label for="username"> Identifiant : </label>
-				<input type="text" name="username" required id="username" class="form-control">
-			</div>
-
-			<div class="form-group">
-				<label for="password"> Mot de passe : </label>
-				<input type="password" name="password" required id="password" class="form-control">
-			</div>
-			<button type="submit"> Se connecter </button>
-		</form>
-	</div>
+    <div class="mesonglet">
+      <h2>Connexion </h2>
+      <div class="form-group">
+        <input class="form-control" class="D" placeholder="Identifiant" type="text" name="name" value=""><br>
+      </div>
+      <div class="form-group">
+        <input class="form-control" placeholder="Mot de passe" type="password" name="Prenom" value="">
+      </div>
+      <button type="button" name="button">Connexion</button><br>
+      <a href="signup.php">Inscription ?</a>
+      <a href="#">Mot de passe oublié ?</a>
+    </div>
 
 </body>
 </html>
