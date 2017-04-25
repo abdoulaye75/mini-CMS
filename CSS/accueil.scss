@@ -1,3 +1,5 @@
+$white: #fff;
+
 body{
   background-color: AliceBlue ;
 }
@@ -28,21 +30,21 @@ button{
 }
 
 section {
-  background-image: url("../img/cake.jpeg");
+  background-image: url("../img/cake.jpg");
   background-repeat: no-repeat;
   background-size: cover;
   height: 600px;
   margin-bottom: 50px;
 
   h1 {
-    color: black;
+    color: $white;
     font-weight: bold;
     font-size: 40px;
   }
 
   p {
     font-size: 30px;
-    color: #000;
+    color: $white;
     font-weight: bold;
   }
 }
