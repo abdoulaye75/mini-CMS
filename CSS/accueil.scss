@@ -43,7 +43,14 @@ section {
   p {
     font-size: 30px;
     color: #000;
+    font-weight: bold;
   }
 }
 
-.liste_articles {margin-bottom:150px;}
+.liste_articles {
+  margin-bottom:150px;
+  .recette {
+    font-size: 20px;
+    color: green;
+  }
+}
