@@ -1,3 +1,7 @@
+<?php
+  // $bdd = new PDO('mysql:host=localhost;dbname=mini-cms;charset=utf8','root','');
+  $bdd = new PDO("mysql:host=localhost;dbname=mini-cms;charset=ut8","phpmyadmin","");
+ ?>
 <!DOCTYPE html>
 <html>
   <head>
@@ -9,8 +13,13 @@
     <link rel="stylesheet" type="text/css" href="CSS/accueil.css">
   </head>
   <body>
-
-    <nav class="navbar navbar-inverse">
+ <?php
+      $reponse = $bdd->query('SELECT * FROM mini-cms');
+      while ($donnee = $reponse->fetch()) {
+      echo"";
+      }
+     ?>
+<nav class="navbar navbar-inverse">
       <div class="container-fluid">
         <div class="navbar-header">
           <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
