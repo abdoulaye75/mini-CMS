@@ -1,6 +1,9 @@
 <?php
-  // $bdd = new PDO('mysql:host=localhost;dbname=mini-cms;charset=utf8','root','');
-  $bdd = new PDO("mysql:host=localhost;dbname=mini-cms;charset=ut8","phpmyadmin","");
+
+  include 'database/database.php';
+
+  $reponse = $bdd->query('SELECT name FROM recettes');
+
  ?>
 <!DOCTYPE html>
 <html>
@@ -13,13 +16,8 @@
     <link rel="stylesheet" type="text/css" href="CSS/accueil.css">
   </head>
   <body>
- <?php
-      $reponse = $bdd->query('SELECT * FROM mini-cms');
-      while ($donnee = $reponse->fetch()) {
-      echo"";
-      }
-     ?>
-<nav class="navbar navbar-inverse">
+ 
+    <nav class="navbar navbar-inverse">
       <div class="container-fluid">
         <div class="navbar-header">
           <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
@@ -42,23 +40,20 @@
       </div>
     </nav>
 
-    <h1> Recettes de cuisine </h1>
-    <p> Vous pouvez consulter la liste des articles, en ajouter et en modifiant si vous êtes inscrit ou connecté. </p>
+    <section>
+      <h1 class="text-center"> Recettes de cuisine </h1>
+      <p class="text-center"> Vous pouvez consulter la liste des articles, en ajouter et en modifiant si vous êtes inscrit ou connecté. </p>
+    </section>
 
-    <img src="img/cake.jpeg" alt="gâteau au chocolat">
-
-    <div class="mesonglet">
-      <h2>Connexion </h2>
-      <div class="form-group">
-        <input class="form-control" class="D" placeholder="Identifiant" type="text" name="name" value=""><br>
-      </div>
-      <div class="form-group">
-        <input class="form-control" placeholder="Mot de passe" type="password" name="Prenom" value="">
-      </div>
-      <button type="button" name="button">Connexion</button><br>
-      <a href="views/signup.php">Inscription ?</a>
-      <a href="#">Mot de passe oublié ?</a>
-    </div>
+    <ul class="liste_articles">
+    <?php
+      
+      while ($donnees = $reponse->fetch()) { ?>
+        <li> <?php echo '<a href="views/recette.php?name='.$donnees['name'].'">'.$donnees['name'].'</a>'; ?> </li>
+      <?php 
+        } $reponse->closeCursor();
+     ?>
+     </ul>
 
     
   </body>
