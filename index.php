@@ -49,7 +49,7 @@
     <?php
       
       while ($donnees = $reponse->fetch()) { ?>
-        <li> <?php echo '<a href="views/recette.php?name='.$donnees['name'].'">'.$donnees['name'].'</a>'; ?> </li>
+        <li> <?php echo '<a href="views/recette.php?name='.$donnees['name'].'" class="recette">'.$donnees['name'].'</a>'; ?> </li>
       <?php 
         } $reponse->closeCursor();
      ?>
