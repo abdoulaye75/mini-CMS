@@ -19,7 +19,9 @@
 				<label for="password"> Mot de passe : </label>
 				<input type="password" name="password" required id="password" class="form-control">
 			</div>
-			<button type="submit"> S'inscrire </button>
+			<form action="articles.php" method="post">
+				<button type="submit"> S'inscrire </button>
+			</form>
 		</form>
 	</div>
 
