@@ -1,3 +1,7 @@
+<?php
+  // $bdd = new PDO('mysql:host=localhost;dbname=mini-cms;charset=utf8','root','');
+  $bdd = new PDO("mysql:host=localhost;dbname=mini-cms;charset=ut8","phpmyadmin","");
+ ?>
 <!DOCTYPE html>
 <html>
   <head>
@@ -7,17 +11,25 @@
     <link rel="stylesheet" type="text/css" href="CSS/accueil.css">
   </head>
   <body>
+    <?php
+      // $reponse = $bdd->query('SELECT * FROM ');
+      // while ($donnee = $reponse->fetch()) {
+      // echo"";
+      // }
+     ?>
     <div class="mesonglet">
-      <h2>Connexion </h2>
-      <div class="form-group">
-        <input class="form-control" class="D" placeholder="Identifiant" type="text" name="name" value=""><br>
-      </div>
-      <div class="form-group">
-        <input class="form-control" placeholder="Mot de passe" type="password" name="Prenom" value="">
-      </div>
-      <button type="button" name="button">Connexion</button><br>
-      <a href="#">Inscription ?</a>
-      <a href="#">Mot de passe oublié ?</a>
+      <form action="views/articles.php" method="post">
+        <h2>Connexion </h2>
+        <div class="form-group">
+          <input class="form-control" class="D" placeholder="Identifiant" type="text" name="name" value=""><br>
+        </div>
+        <div class="form-group">
+          <input class="form-control" placeholder="Mot de passe" type="password" name="Prenom" value="">
+        </div>
+        <button  type="submit" name="button">Connexion</button><br>
+        <a href="views/signup.php">Inscription ?</a>
+        <a href="#">Mot de passe oublié ?</a>
+      </form>
     </div>
   </body>
 </html>
