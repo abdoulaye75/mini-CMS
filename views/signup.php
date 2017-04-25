@@ -8,12 +8,28 @@
 </head>
 <body>
 
-	<nav>
-		<ul>
-			<li> <a href="../index.php"> Retour à l'accueil </a> </li>
-			<li> <a href="articles.php"> Liste des articles </a> </li>
-		</ul>
-	</nav>
+	<nav class="navbar navbar-inverse">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>                        
+          </button>
+
+        </div>
+        <div class="collapse navbar-collapse" id="myNavbar">
+          <ul class="nav navbar-nav">
+            <li><a href="../index.php"> Accueil</a></li>            
+            <li><a href="articles.php"> Liste des articles </a></li>
+          </ul>
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="signup.php"> S'inscrire </a></li>
+            <li><a href="signin.php"> se connecter </a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
 
 	<div class="conteneur">
 		<h1 class="text-center"> S'inscrire </h1>
@@ -33,5 +49,7 @@
 		</form>
 	</div>
 
+	<script src="../jquery-2.2.4.js"></script>
+	<script src="../CSS/bootstrap/js/bootstrap.min.js"></script>
 </body>
 </html>
