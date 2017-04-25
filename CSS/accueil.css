@@ -36,9 +36,13 @@ section {
     font-size: 40px; }
   section p {
     font-size: 30px;
-    color: #000; }
+    color: #000;
+    font-weight: bold; }
 
 .liste_articles {
   margin-bottom: 150px; }
+  .liste_articles .recette {
+    font-size: 20px;
+    color: green; }
 
 /*# sourceMappingURL=accueil.css.map */
