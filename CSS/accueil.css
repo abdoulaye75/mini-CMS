@@ -29,7 +29,8 @@ section {
   background-repeat: no-repeat;
   background-size: cover;
   height: 600px;
-  margin-bottom: 50px; }
+  margin-bottom: 50px;
+  margin-top: -20px; }
   section h1 {
     color: #fff;
     font-weight: bold;
