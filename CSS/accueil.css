@@ -25,18 +25,18 @@ button {
   padding: 15px 30px; }
 
 section {
-  background-image: url("../img/cake.jpeg");
+  background-image: url("../img/cake.jpg");
   background-repeat: no-repeat;
   background-size: cover;
   height: 600px;
   margin-bottom: 50px; }
   section h1 {
-    color: black;
+    color: #fff;
     font-weight: bold;
     font-size: 40px; }
   section p {
     font-size: 30px;
-    color: #000;
+    color: #fff;
     font-weight: bold; }
 
 .liste_articles {
