@@ -26,3 +26,24 @@ input{
 button{
   padding: 15px 30px;
 }
+
+section {
+  background-image: url("../img/cake.jpeg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 600px;
+  margin-bottom: 50px;
+
+  h1 {
+    color: black;
+    font-weight: bold;
+    font-size: 40px;
+  }
+
+  p {
+    font-size: 30px;
+    color: #000;
+  }
+}
+
+.liste_articles {margin-bottom:150px;}
