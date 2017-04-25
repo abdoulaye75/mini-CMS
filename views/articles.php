@@ -28,6 +28,14 @@
       </div>
     </nav>
 
+    <?php
+
+  		include '../database/database.php';
+
+  		$reponse = $bdd->query('SELECT * FROM recettes');
+
+ 	?>
+
 	<table class="table table-bordered table-striped table-responsive">
 		<thead>
 			<tr>
@@ -38,17 +46,17 @@
 		</thead>
 
 		<tbody>
+			<?php
+      
+      		while ($donnees = $reponse->fetch()) { ?>
 			<tr>
-				<td> <a href="recette1.php"> Gâteau </a></td>
-				<td>oeufs, farine</td>
-				<td>50</td>
+				<td> <?php echo '<a href="recette.php?name='.$donnees['name'].'">'.$donnees['name'].'</a>'; ?> </td>
+				<td> <?php echo $donnees['ingredients']; ?> </td>
+				<td> <?php echo $donnees['preparation_time']; ?> </td>
 			</tr>
-
-			<tr>
-				<td> <a href="recette2.php"> Madeleine </a> </td>
-				<td>oeufs</td>
-				<td>30</td>
-			</tr>
+			<?php 
+    		} $reponse->closeCursor();
+     			?>
 		</tbody>
 	</table>
 
