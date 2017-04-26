@@ -1,3 +1,23 @@
+<?php
+	include '../database/database.php';
+	session_start();
+
+	$username = htmlspecialchars($_POST['username']);
+	$password = htmlspecialchars($_POST['password']);
+
+	$newuser = $bdd->prepare("INSERT INTO users (name, password) VALUES (:name, :password)");
+
+	if ((isset($username)) && (isset($password)) && (isset($_POST['subscribe']))) {
+		$_SESSION['name'] = $username;
+		$_SESSION['password'] = $password;
+
+		$newuser->execute(array('name' => $username, 'password' => $password));
+
+		header("Location: http://localhost/mini-CMS/views/page_membre.php");
+	}
+
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -33,7 +53,7 @@
 
 	<div class="conteneur">
 		<h1 class="text-center"> S'inscrire </h1>
-		<form action="articles.php" method="post">
+		<form action="" method="post">
 			<div class="form-group">
 				<label for="username"> Identifiant : </label>
 				<input type="text" name="username" required id="username" class="form-control">
@@ -43,9 +63,7 @@
 				<label for="password"> Mot de passe : </label>
 				<input type="password" name="password" required id="password" class="form-control">
 			</div>
-			<form action="articles.php" method="post">
-				<button type="submit"> S'inscrire </button>
-			</form>
+			<button type="submit" name="subscribe"> S'inscrire </button>
 		</form>
 	</div>
 
