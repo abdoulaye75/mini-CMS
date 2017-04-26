@@ -1,3 +1,10 @@
+<?php
+
+include '../database/database.php';
+session_start();
+
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -21,8 +28,19 @@
         <div class="collapse navbar-collapse" id="myNavbar">
           <ul class="nav navbar-nav">
             <li> <a href="../index.php"> Retour à l'accueil </a> </li>
-			<li> <a href="create.php"> Ajouter une recette </a> </li>
-			<li> <a href="update.php"> Modifier une recette </a> </li>
+            <li> <?php if ((isset($_SESSION['name'])) && (isset($_SESSION['password']))) {
+				echo '<a href="create.php"> Ajouter une recette </a>'; ?>
+			</li>
+			<li> <?php echo '<a href="update.php"> Modifier une recette </a>'; ?> </li>
+			<li> <?php echo '<a href="signout.php"> Se déconnecter </a>'; ?> </li>
+			<?php }
+
+			else { ?>
+	    	<li> <?php echo "<a href='signup.php'> S'inscrire </a>"; ?> </li>
+	        <li> <?php echo "<a href='signin.php'> se connecter </a>"; ?> </li>
+
+			<?php }?>    	
+    		
           </ul>
         </div>
       </div>
