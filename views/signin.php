@@ -24,6 +24,7 @@ else { // sinon, la session peut démarrer et l'utilisateur peut accéder à sa 
 	header("Location: http://localhost/mini-cms/page_membre.php");
 }
 
+
  ?>
 <!DOCTYPE html>
 <html>
@@ -63,7 +64,7 @@ else { // sinon, la session peut démarrer et l'utilisateur peut accéder à sa 
     <div class="mesonglet">
       <h2>Connexion </h2>
       <div class="form-group">
-        <input class="form-control" class="D"  placeholder="Usernamne" type="text" name="Usernamne" value=""><br>
+        <input class="form-control" class="D"  placeholder="Username" type="text" name="Usernamne" value=""><br>
       </div>
       <div class="form-group">
         <input class="form-control"  placeholder="Password" type="password" name="Password" value="">
