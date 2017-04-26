@@ -1,6 +1,6 @@
 <?php
-	$base = new PDO('mysql:host=localhost;dbname=mini-cms;charset=utf8','root','carton');
-	$req = $base->prepare("SELECT name, password FROM users WHERE name = :name AND password = :password");
+include '../database/database.php';
+	$req = $bdd->prepare("SELECT name, password FROM users WHERE name = :name AND password = :password");
 	 $login = htmlspecialchars($_POST['Username']);
 	 $mdp = htmlspecialchars($_POST['Password']);
 	 $submit = htmlspecialchars($_POST['button']);
@@ -23,9 +23,7 @@ else { // sinon, la session peut démarrer et l'utilisateur peut accéder à sa 
 	$_SESSION['mdp'] = $connecteduser['mdp'];
 	header("Location: http://localhost/mini-cms/page_membre.php");
 }
-
-
- ?>
+?>
 <!DOCTYPE html>
 <html>
 <head>
