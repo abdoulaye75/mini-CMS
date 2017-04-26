@@ -1,9 +1,29 @@
 <?php
-
 include '../database/database.php';
+	$req = $bdd->prepare("SELECT name, password FROM users WHERE name = :name AND password = :password");
+	 $login = htmlspecialchars($_POST['Username']);
+	 $mdp = htmlspecialchars($_POST['Password']);
+	 $submit = htmlspecialchars($_POST['button']);
+	 // Si l'utilisateur remplit le formulaire et le valide
+	 if ((isset($login)) && (isset($mdp)) && (isset($submit))){
+	 $_SESSION['name'] = $login;
+	 $_SESSION['password'] = $mdp;
+	 $req->execute(array('name' => $login,'password' => $mdp));
 
+	 $connecteduser = $req->fetch();
+}
+	//si les identifiants de l'utilisateur ne figurent pas dans la base de données, on empêche la connexion et on le propose de s'inscrire
+if (!$connecteduser) {
+	echo "Utilisateur inconnu ! Vérifiez bien votre identifiant et votre mot de passe !";
+	echo '<a href="signup.php"> S\'inscrire </a>';
+}
+else { // sinon, la session peut démarrer et l'utilisateur peut accéder à sa page membre personnelle
+	session_start();
+	$_SESSION['name'] = $connecteduser['name'];
+	$_SESSION['mdp'] = $connecteduser['mdp'];
+	header("Location: http://localhost/mini-cms/page_membre.php");
+}
 ?>
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -22,13 +42,13 @@ include '../database/database.php';
           <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
-            <span class="icon-bar"></span>                        
+            <span class="icon-bar"></span>
           </button>
 
         </div>
         <div class="collapse navbar-collapse" id="myNavbar">
           <ul class="nav navbar-nav">
-            <li><a href="../index.php"> Accueil</a></li>            
+            <li><a href="../index.php"> Accueil</a></li>
             <li><a href="articles.php"> Liste des articles </a></li>
           </ul>
           <ul class="nav navbar-nav navbar-right">
@@ -42,10 +62,10 @@ include '../database/database.php';
     <div class="mesonglet">
       <h2>Connexion </h2>
       <div class="form-group">
-        <input class="form-control" class="D" placeholder="Identifiant" type="text" name="name" value=""><br>
+        <input class="form-control" class="D"  placeholder="Username" type="text" name="Usernamne" value=""><br>
       </div>
       <div class="form-group">
-        <input class="form-control" placeholder="Mot de passe" type="password" name="Prenom" value="">
+        <input class="form-control"  placeholder="Password" type="password" name="Password" value="">
       </div>
       <button type="button" name="button">Connexion</button><br>
       <a href="signup.php">Inscription ?</a>
