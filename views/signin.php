@@ -21,7 +21,7 @@ else { // sinon, la session peut démarrer et l'utilisateur peut accéder à sa 
 	session_start();
 	$_SESSION['name'] = $connecteduser['name'];
 	$_SESSION['mdp'] = $connecteduser['mdp'];
-	header("Location: http://localhost/mini-cms/views/page_membre.php");
+	header("Location: http://localhost/mini-CMS/views/page_membre.php");
 }
 
 
