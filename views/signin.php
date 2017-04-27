@@ -1,9 +1,33 @@
 <?php
 include '../database/database.php';
+
 	$req = $bdd->prepare("SELECT name, password FROM users WHERE name = :name AND password = :password");
-	 $login = htmlspecialchars($_POST['Username']);
-	 $mdp = htmlspecialchars($_POST['Password']);
-	 $submit = htmlspecialchars($_POST['button']);
+
+	 $Username = htmlspecialchars($_POST['Username']);
+	 $Password = htmlspecialchars($_POST['Password']);
+	 $submit = $_POST['button'];
+
+   if ((isset($Username)) && (isset($Password)) && (isset($submit))){
+        // Si l'utilisateur remplit le formulaire et le valide
+        
+     $_SESSION['name'] = $Username;
+     $_SESSION['password'] = $Password;
+     $req->execute(array('name' => $Username,'password' => $Password));
+
+     $connecteduser = $req->fetch();
+    //si les identifiants de l'utilisateur ne figurent pas dans la base de données, on empêche la connexion et on le propose de s'inscrire
+    if (!$connecteduser) {
+      echo "Utilisateur inconnu ! Vérifiez bien votre identifiant et votre mot de passe !";
+      echo '<a href="signup.php"> S\'inscrire </a>';
+    }
+    else { // sinon, la session peut démarrer et l'utilisateur peut accéder à sa page membre personnelle
+      session_start();
+      $_SESSION['name'] = $connecteduser['name'];
+      $_SESSION['password'] = $connecteduser['password'];
+      header("Location: http://localhost/mini-CMS/views/page_membre.php");
+    }
+  }
+  
 ?>
 
 <!DOCTYPE html>
@@ -41,40 +65,18 @@ include '../database/database.php';
       </div>
     </nav>
 
-    <div class="mesonglet">
+    <form class="mesonglet" method="post" action="">
       <h2>Connexion </h2>
       <div class="form-group">
-        <input class="form-control" class="D"  placeholder="Username" type="text" name="Usernamne" value=""><br>
+        <input class="form-control" class="D"  placeholder="Username" type="text" name="Username" value=""><br>
       </div>
       <div class="form-group">
         <input class="form-control"  placeholder="Password" type="password" name="Password" value="">
       </div>
-      <button type="button" name="button">Connexion</button><br>
+      <button type="submit" name="button">Connexion</button><br>
       <a href="signup.php">Inscription ?</a>
       <a href="#">Mot de passe oublié ?</a>
-
-      <?php if ((isset($login)) && (isset($mdp)) && (isset($submit))){
-        // Si l'utilisateur remplit le formulaire et le valide
-        
-           $_SESSION['name'] = $login;
-           $_SESSION['password'] = $mdp;
-           $req->execute(array('name' => $login,'password' => $mdp));
-
-           $connecteduser = $req->fetch();
-          //si les identifiants de l'utilisateur ne figurent pas dans la base de données, on empêche la connexion et on le propose de s'inscrire
-          if (!$connecteduser) {
-            echo "Utilisateur inconnu ! Vérifiez bien votre identifiant et votre mot de passe !";
-            echo '<a href="signup.php"> S\'inscrire </a>';
-          }
-          else { // sinon, la session peut démarrer et l'utilisateur peut accéder à sa page membre personnelle
-            session_start();
-            $_SESSION['name'] = $connecteduser['name'];
-            $_SESSION['mdp'] = $connecteduser['mdp'];
-            header("Location: http://localhost/mini-CMS/views/page_membre.php");
-          }
-        }
-    ?>
-    </div>
+    </form>
 
 </body>
 </html>
