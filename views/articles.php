@@ -40,7 +40,7 @@ session_start();
 	        <li> <?php echo "<a href='signin.php'> se connecter </a>"; ?> </li>
 
 			<?php }?>    	
-    		
+    		<li> <a href="recettes.php"> Fiches recette </a> </li>
           </ul>
         </div>
       </div>
@@ -61,6 +61,7 @@ session_start();
 				<th> Ingrédients </th>
 				<th> Temps de préparation (en minutes) </th>
 				<th> Modifier un article </th>
+				<th> Supprimer un article </th>
 			</tr>
 		</thead>
 
@@ -69,7 +70,7 @@ session_start();
       
       		while ($donnees = $reponse->fetch()) { ?>
 			<tr>
-				<td> <?php echo '<a href="recette.php?name='.$donnees['name'].'">'.$donnees['name'].'</a>'; ?> </td>
+				<td> <?php echo '<a href="">'.$donnees['name'].'</a>'; ?> </td>
 				<td> <?php echo $donnees['ingredients']; ?> </td>
 				<td> <?php echo $donnees['preparation_time']; ?> </td>
 				<td> <?php $modifiedrecipes = array($donnees);
@@ -77,6 +78,11 @@ session_start();
 			          echo '<a href="update.php?id='.$donnees['id'].'"> Modifier la recette </a>';
 			        } ?>
 		        </td>
+		        <td> <?php $recipes = array($donnees);
+		        foreach ($recipes as $recipe) {
+		        	echo '<a href="delete.php?id='.$donnees['id'].'"> Supprimer la recette </a>';
+		        }
+		        ?> </td>
 			</tr>
 			<?php 
     		} $reponse->closeCursor();
