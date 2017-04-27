@@ -43,18 +43,6 @@
     <section>
       <h1 class="text-center"> Recettes de cuisine </h1>
       <p class="text-center"> Vous pouvez consulter la liste des articles, en ajouter et en modifiant si vous êtes inscrit ou connecté. </p>
-    </section>
-
-    <ul class="liste_articles">
-    <?php
-      
-      while ($donnees = $reponse->fetch()) { ?>
-        <li> <?php echo '<a href="views/recette.php?name='.$donnees['name'].'" class="recette">'.$donnees['name'].'</a>'; ?> </li>
-      <?php 
-        } $reponse->closeCursor();
-     ?>
-     </ul>
-
-    
+    </section>    
   </body>
 </html>
