@@ -1,3 +1,17 @@
+<?php
+	// $bdd = new PDO('mysql:host=localhost;dbname=mini-cms;charset=utf8','root','carton');
+	$name = htmlspecialchars($_POST['name']);
+	$ingredients = htmlspecialchars($_POST['ingredients']);
+	$time = htmlspecialchars($_POST['time']);
+	$submit = $_POST['submit'];
+	if((isset($name)) && (isset($ingredients)) && (isset($time)) && (isset($submit))) {
+		$req = $bdd->prepare("UPDATE recettes SET name = :nvname , ingredients = :nvingredients, preparation_time = :nvpreparation_time WHERE id = :id");
+		$req->execute(array('nvname' => $nvname, 'nvingredients' => $nvingredients, 'nvpreparation_time' => $nvpreparation_time));
+		echo" Les modification de vos recettes ce sont modifiées avec succés .";
+	}
+	$modification = $bdd->prepare('SELECT * recettes');
+	$modification->execute(array('id' => $_GET['id']));
+ ?>
 <!DOCTYPE html>
 <html>
 <head>

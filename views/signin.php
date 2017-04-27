@@ -4,7 +4,7 @@ include '../database/database.php';
 	 $login = htmlspecialchars($_POST['Username']);
 	 $mdp = htmlspecialchars($_POST['Password']);
 	 $submit = htmlspecialchars($_POST['button']);
-<<<<<<< HEAD
+
 	 // Si l'utilisateur remplit le formulaire et le valide
 	 if ((isset($login)) && (isset($mdp)) && (isset($submit))){
 	 $_SESSION['name'] = $login;
@@ -25,10 +25,6 @@ else { // sinon, la session peut démarrer et l'utilisateur peut accéder à sa 
 	header("Location: http://localhost/mini-CMS/views/page_membre.php");
 }
  ?>
-=======
-?>
-
->>>>>>> 845824cadb162f7c982236cf14ce05c3ed7d1415
 <!DOCTYPE html>
 <html>
 <head>
@@ -78,7 +74,7 @@ else { // sinon, la session peut démarrer et l'utilisateur peut accéder à sa 
 
       <?php if ((isset($login)) && (isset($mdp)) && (isset($submit))){
         // Si l'utilisateur remplit le formulaire et le valide
-        
+
            $_SESSION['name'] = $login;
            $_SESSION['password'] = $mdp;
            $req->execute(array('name' => $login,'password' => $mdp));
