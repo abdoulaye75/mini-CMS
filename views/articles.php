@@ -60,6 +60,7 @@ session_start();
 				<th> Nom du plat </th>
 				<th> Ingrédients </th>
 				<th> Temps de préparation (en minutes) </th>
+				<th> Modifier un article </th>
 			</tr>
 		</thead>
 
@@ -71,6 +72,11 @@ session_start();
 				<td> <?php echo '<a href="recette.php?name='.$donnees['name'].'">'.$donnees['name'].'</a>'; ?> </td>
 				<td> <?php echo $donnees['ingredients']; ?> </td>
 				<td> <?php echo $donnees['preparation_time']; ?> </td>
+				<td> <?php $modifiedrecipes = array($donnees);
+			        foreach ($modifiedrecipes as $modifiedrecipe) {
+			          echo '<a href="update.php?id='.$donnees['id'].'"> Modifier la recette </a>';
+			        } ?>
+		        </td>
 			</tr>
 			<?php 
     		} $reponse->closeCursor();
