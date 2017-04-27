@@ -23,11 +23,7 @@ else { // sinon, la session peut démarrer et l'utilisateur peut accéder à sa 
 	$_SESSION['mdp'] = $connecteduser['mdp'];
 	header("Location: http://localhost/mini-CMS/views/page_membre.php");
 }
-<<<<<<< HEAD
  ?>
-=======
-?>
->>>>>>> c7230cd099dd896846ba98f0e3feb7256e30f617
 <!DOCTYPE html>
 <html>
 <head>
