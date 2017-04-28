@@ -1,6 +1,7 @@
 <?php
 
   include 'database/database.php';
+  session_start();
 
   $reponse = $bdd->query('SELECT name FROM recettes');
 
@@ -16,8 +17,8 @@
     <link rel="stylesheet" type="text/css" href="CSS/accueil.css">
   </head>
   <body>
- 
-    <nav class="navbar navbar-inverse">
+
+  <nav class="navbar navbar-inverse">
       <div class="container-fluid">
         <div class="navbar-header">
           <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
@@ -29,12 +30,20 @@
         </div>
         <div class="collapse navbar-collapse" id="myNavbar">
           <ul class="nav navbar-nav">
-            <li><a href="index.php"> Accueil</a></li>            
-            <li><a href="views/articles.php"> Liste des articles </a></li>
-          </ul>
-          <ul class="nav navbar-nav navbar-right">
-            <li><a href="views/signup.php"> S'inscrire </a></li>
-            <li><a href="views/signin.php"> se connecter </a></li>
+            <li> <a href="index.php"> Accueil </a> </li>
+            <li> <?php if ((isset($_SESSION['name'])) && (isset($_SESSION['password']))) {
+        echo '<a href="views/create.php"> Ajouter une recette </a>'; ?>
+      </li>
+      <li> <?php echo '<a href="views/update.php"> Modifier une recette </a>'; ?> </li>
+      <li> <?php echo '<a href="views/signout.php"> Se déconnecter </a>'; ?> </li>
+      <?php }
+
+      else { ?>
+        <li> <?php echo "<a href='views/signup.php'> S'inscrire </a>"; ?> </li>
+          <li> <?php echo "<a href='views/signin.php'> se connecter </a>"; ?> </li>
+
+      <?php }?>     
+        <li> <a href="views/recettes.php"> Fiches recette </a> </li>
           </ul>
         </div>
       </div>
