@@ -51,7 +51,7 @@
 
     <section>
       <h1 class="text-center"> Recettes de cuisine </h1>
-      <p class="text-center"> Vous pouvez consulter la liste des articles, en ajouter et en modifiant si vous êtes inscrit ou connecté. </p>
+      <p class="text-center"> Vous pouvez consulter la liste des articles, en ajouter, en modifier et en supprimer si vous êtes inscrit ou connecté. </p>
     </section>    
   </body>
 </html>
