@@ -56,7 +56,7 @@ if (isset($name) && isset($ingredients) && isset($time) && isset($submit)) {
 
       <?php }?>     
         <li> <a href="recettes.php"> Fiches recette </a> </li>
-        <li> <a href="views/articles.php"> Liste des articles </a> </li>
+        <li> <a href="articles.php"> Liste des articles </a> </li>
           </ul>
         </div>
       </div>
