@@ -59,7 +59,9 @@ if (isset($_GET['id'])) {
 	    	<li> <?php echo "<a href='signup.php'> S'inscrire </a>"; ?> </li>
 	        <li> <?php echo "<a href='signin.php'> se connecter </a>"; ?> </li>
 
-			<?php }?>    	
+			<?php }?>
+			
+    		<li> <a href="views/articles.php"> Liste des articles </a> </li>   	
     		
           </ul>
         </div>

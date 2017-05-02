@@ -41,6 +41,7 @@ session_start();
 
 			<?php }?>    	
     		<li> <a href="recettes.php"> Fiches recette </a> </li>
+    		<li> <a href="views/articles.php"> Liste des articles </a> </li>
           </ul>
         </div>
       </div>
