@@ -23,7 +23,7 @@ if (isset($_GET['id'])) {
 		echo "Votre recette a été modifiée avec succès .";
 	}
 }
-	$modification = $bdd->prepare("SELECT * recettes");
+	$modification = $bdd->prepare("SELECT * FROM recettes WHERE id = :id");
 	$modification->execute(array('id' => $_GET['id']));
  ?>
 <!DOCTYPE html>
@@ -69,10 +69,11 @@ if (isset($_GET['id'])) {
     </nav>
 
 	<form action="" method="post">
-	
-		<label for="name"> Nom de la recette : </label> <input type="text" name="name" id="name"> <br>
-		<label for="ingredients"> Ingrédients : </label> <input type="text" name="ingredients" id="ingredients"> <br>
-		<label for="time"> Temps de préparation (en minutes) : </label> <input type="text" name="time" id="time"> <br>
+	<?php while ($field = $modification->fetch()) { ?>
+		<label for="name"> Nom de la recette : </label> <input type="text" name="name" id="name" value="<?php echo $field['name'] ?>"> <br>
+		<label for="ingredients"> Ingrédients : </label> <input type="text" name="ingredients" id="ingredients" value="<?php echo $field['ingredients'] ?>"> <br>
+		<label for="time"> Temps de préparation (en minutes) : </label> <input type="text" name="time" id="time" value="<?php echo $field['preparation_time'] ?>"> <br>
+		<?php } $modification->closeCursor(); ?>
 		
 		<button type="submit" name="submit"> Modifier cette recette </button>
 	</form>
