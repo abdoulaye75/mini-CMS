@@ -62,13 +62,31 @@ if (isset($name) && isset($ingredients) && isset($time) && isset($submit)) {
       </div>
     </nav>
 
-	<form action="" method="post">
-		<label for="name"> Nom de la recette : </label> <input type="text" name="name" id="name"> <br>
-		<label for="ingredients"> Ingrédients : </label> <input type="text" name="ingredients" id="ingredients"> <br>
-		<label for="time"> Temps de préparation : </label> <input type="duration" name="time" id="time"
-		 placeholder="ex: 01:00:00 pour 1 heure"> <br>
+	<form action="" method="post" class="col-md-6">
+    <div class="form-group">
+  		<label for="name"> Nom de la recette : </label>
+      <input type="text" name="name" id="name" class="form-control">
+    </div>
+
+		<div class="form-group">
+      <label for="ingredients"> Ingrédients : </label>
+      <input type="text" name="ingredients" id="ingredients" class="form-control">
+    </div>
+
+		<div class="form-group">
+      <label for="time"> Temps de préparation : </label>
+      <input type="duration" name="time" id="time" class="form-control" placeholder="ex: 01:00:00 pour 1 heure">
+    </div>
+
 		<button type="submit" name="submit"> Ajouter cette nouvelle recette </button>
 	</form>
+
+  <section class="recap">
+    <h1> Récapitulatif de votre saisie : </h1>
+    <p> Nom de la recette : </p>
+    <p> Ingrédients : </p>
+    <p> Temps de préparation (en minutes) : </p>
+  </section>
 
 	<script src="../jquery-2.2.4.js"></script>
 	<script src="../CSS/bootstrap/js/bootstrap.min.js"></script>
