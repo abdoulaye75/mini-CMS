@@ -69,18 +69,20 @@ include '../database/database.php';
       }
     ?>
 
-    <form class="mesonglet" method="post" action="">
-      <h2>Connexion </h2>
-      <div class="form-group">
-        <input class="form-control" class="D"  placeholder="Identifiant" type="text" name="Username" required>
-      </div>
-      <div class="form-group">
-        <input class="form-control"  placeholder="Mot de passe" type="password" name="Password" required>
-      </div>
-      <button type="submit" name="button">Connexion</button><br>
-      <a href="signup.php">Inscription ?</a>
-      <a href="#">Mot de passe oublié ?</a>
-    </form>
+    <div class="conteneur">
+      <h1 class="text-center">Connexion </h1> 
+      <form class="mesonglet" method="post" action="">
+        <div class="form-group">
+          <input class="form-control" class="D"  placeholder="Identifiant" type="text" name="Username" required>
+        </div>
+        <div class="form-group">
+          <input class="form-control"  placeholder="Mot de passe" type="password" name="Password" required>
+        </div>
+        <button type="submit" name="button">Connexion</button>
+        <a href="signup.php">S'inscrire ?</a>
+        <a href="#">Mot de passe oublié ?</a>
+      </form>
+    </div>
 
 </body>
 </html>

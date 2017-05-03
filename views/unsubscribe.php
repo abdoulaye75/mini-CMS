@@ -7,7 +7,8 @@ if (isset($_GET['id'])) {
 	if (isset($_POST['submit'])) {
 		$deleteUser = $bdd->prepare("DELETE FROM users WHERE id = :id");
 		$deleteUser->execute(array('id' => $_GET['id']));
-
+    $_SESSION = array();
+    session_destroy();
 		header("Location: http://localhost/mini-CMS/index.php");
 	}
 }

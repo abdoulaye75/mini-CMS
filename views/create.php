@@ -7,7 +7,7 @@ include '../database/database.php';
 ?>
 
 <!DOCTYPE html>
-<html ng-app="myApp" ng-controller="myCtrl">
+<html>
 <head>
 	<meta charset="utf-8">
 	<title> Ajouter une recette </title>
@@ -85,17 +85,6 @@ include '../database/database.php';
 		<button type="submit" name="submit"> Ajouter cette nouvelle recette </button>
 	</form>
 
-  <section class="recap">
-    <h1> Récapitulatif de votre saisie : </h1>
-
-    <p> Nom de la recette : {{name}} </p>
-    <p> Ingrédients : {{ingredients}} </p>
-    <p> Temps de préparation (en minutes) : {{time}} </p>
-  </section>
-
 	<script src="../jquery-2.2.4.js"></script>
 	<script src="../CSS/bootstrap/js/bootstrap.min.js"></script>
-  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
-  <script src="../js/app.js"></script>
-</body>
 </html>

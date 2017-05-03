@@ -32,11 +32,11 @@ $delete_user = $user->fetch();
             <li><a href="recettes.php"> Fiches recette </a></li>
           </ul>
           <ul class="nav navbar-nav navbar-right">
-            <li> <?php if ((isset($_SESSION['name'])) && (isset($_SESSION['password']))) {
-				            echo '<a href="signout.php"> Se déconnecter </a>'; ?>
+          <?php if ((isset($_SESSION['name'])) && (isset($_SESSION['password']))) { ?>
+            <li> <?php echo '<a href="signout.php"> Se déconnecter </a>'; ?>
             </li>
             <li> <?php echo '<a href="unsubscribe.php?id='.$delete_user['id'].'"> Supprimer mon compte </a>'; ?> </li>
-			        <?php   }else { ?>
+			        <?php }else { ?>
 	    		  <li> <?php echo "<a href='signup.php'> S'inscrire </a>"; ?> </li>
 	          <li> <?php echo "<a href='signin.php'> se connecter </a>"; ?> </li>
 			         <?php }?>
