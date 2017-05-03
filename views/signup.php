@@ -42,6 +42,7 @@
           <ul class="nav navbar-nav">
             <li><a href="../index.php"> Accueil</a></li>            
             <li><a href="articles.php"> Liste des articles </a></li>
+            <li><a href="recettes.php"> Fiches recette </a></li>
           </ul>
           <ul class="nav navbar-nav navbar-right">
             <li><a href="signup.php"> S'inscrire </a></li>

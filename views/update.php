@@ -4,7 +4,7 @@ session_start();
 
 include("../database/database.php");
 
- ?>
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -28,25 +28,31 @@ include("../database/database.php");
           <ul class="nav navbar-nav">
             <li> <a href="../index.php"> Retour à l'accueil </a> </li>
             <li> <?php if ((isset($_SESSION['name'])) && (isset($_SESSION['password']))) {
-				echo '<a href="create.php"> Ajouter une recette </a>'; ?>
-			</li>
-			<li> <?php echo '<a href="update.php"> Modifier une recette </a>'; ?> </li>
-			<li> <?php echo '<a href="signout.php"> Se déconnecter </a>'; ?> </li>
-			<?php }
+              echo '<a href="create.php"> Ajouter une recette </a>'; ?>
+            </li>
+            <li> <?php echo '<a href="update.php"> Modifier une recette </a>'; ?> </li>
+            <li> <?php echo '<a href="signout.php"> Se déconnecter </a>'; ?> </li>
+             <li> <a href="recettes.php"> Fiches recette </a> </li>
+            <li> <?php if ((isset($_SESSION['name'])) && (isset($_SESSION['password']))) {
+              echo '<a href="create.php"> Ajouter une recette </a>'; ?>
+            </li>
+			      <li> <?php echo '<a href="signout.php"> Se déconnecter </a>'; ?> </li>
+            <li> <?php echo '<a href="unsubscribe.php"> Supprimer mon compte </a>'; ?> </li>
+      <?php }
 
 			else { ?>
-	    	<li> <?php echo "<a href='signup.php'> S'inscrire </a>"; ?> </li>
+	    	  <li> <?php echo "<a href='signup.php'> S'inscrire </a>"; ?> </li>
 	        <li> <?php echo "<a href='signin.php'> se connecter </a>"; ?> </li>
 
 			<?php }?>
-
-    		<li> <a href="views/articles.php"> Liste des articles </a> </li>
+          <li> <a href="views/articles.php"> Liste des articles </a> </li>   	
+    		
 
           </ul>
         </div>
       </div>
     </nav>
-		<?php
+<?php
 			$name = htmlspecialchars($_POST['name']);
 			$ingredients = htmlspecialchars($_POST['ingredients']);
 			$time = htmlspecialchars($_POST['time']);
@@ -69,11 +75,12 @@ include("../database/database.php");
 			$modification = $bdd->prepare("SELECT * FROM recettes WHERE id = :id");
 			$modification->execute(array('id' => $_GET['id']));
 		 ?>
+  
 	<form action="" method="post" class="col-md-6">
 	<?php while ($field = $modification->fetch()) { ?>
 		<div class="form-group">
 			<label for="name"> Nom de la recette : </label>
-			<input required type="text" class="form-control" name="name" id="name" value="<?php echo $field['name'] ?>">
+      <input required type="text" class="form-control" name="name" id="name" value="<?php echo $field['name'] ?>">
 		</div>
 
 		<div class="form-group">
@@ -90,14 +97,9 @@ include("../database/database.php");
 		<button type="submit" name="submit"> Modifier cette recette </button>
 	</form>
 
-	<section class="recap">
-		<h1> Récapitulatif de votre saisie : </h1>
-		<p> Nom de la recette : </p>
-		<p> Ingrédients : </p>
-		<p> Temps de préparation (en minutes) : </p>
-	</section>
-
 	<script src="../jquery-2.2.4.js"></script>
 	<script src="../CSS/bootstrap/js/bootstrap.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+	<script src="../js/app.js"></script>
 </body>
 </html>

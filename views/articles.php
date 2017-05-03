@@ -2,6 +2,8 @@
 
 include '../database/database.php';
 session_start();
+$user = $bdd->query("SELECT * FROM users");
+$delete_user = $user->fetch();
 
 ?>
 
@@ -15,7 +17,7 @@ session_start();
 </head>
 <body>
 
-	<nav class="navbar navbar-inverse">
+  	<nav class="navbar navbar-inverse">
       <div class="container-fluid">
         <div class="navbar-header">
           <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
@@ -31,8 +33,8 @@ session_start();
             <li> <?php if ((isset($_SESSION['name'])) && (isset($_SESSION['password']))) {
 				echo '<a href="create.php"> Ajouter une recette </a>'; ?>
 			</li>
-			<li> <?php echo '<a href="update.php"> Modifier une recette </a>'; ?> </li>
 			<li> <?php echo '<a href="signout.php"> Se déconnecter </a>'; ?> </li>
+            <li> <?php echo '<a href="unsubscribe.php?id='.$delete_user['id'].'"> Supprimer mon compte </a>'; ?> </li>
 			<?php }
 
 			else { ?>

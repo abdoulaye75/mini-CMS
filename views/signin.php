@@ -3,31 +3,6 @@ include '../database/database.php';
 
 	$req = $bdd->prepare("SELECT name, password FROM users WHERE name = :name AND password = :password");
 
-	 $Username = htmlspecialchars($_POST['Username']);
-	 $Password = htmlspecialchars($_POST['Password']);
-	 $submit = $_POST['button'];
-
-   if ((isset($Username)) && (isset($Password)) && (isset($submit))){
-        // Si l'utilisateur remplit le formulaire et le valide
-
-     $_SESSION['name'] = $Username;
-     $_SESSION['password'] = $Password;
-     $req->execute(array('name' => $Username,'password' => $Password));
-
-     $connecteduser = $req->fetch();
-    //si les identifiants de l'utilisateur ne figurent pas dans la base de données, on empêche la connexion et on le propose de s'inscrire
-    if (!$connecteduser) {
-      echo "Utilisateur inconnu ! Vérifiez bien votre identifiant et votre mot de passe !";
-      echo '<a href="signup.php"> S\'inscrire </a>';
-    }
-    else { // sinon, la session peut démarrer et l'utilisateur peut accéder à sa page membre personnelle
-      session_start();
-      $_SESSION['name'] = $connecteduser['name'];
-      $_SESSION['password'] = $connecteduser['password'];
-      header("Location: http://localhost/mini-CMS/views/page_membre.php");
-    }
-  }
-
 ?>
 
 <!DOCTYPE html>
@@ -56,34 +31,56 @@ include '../database/database.php';
           <ul class="nav navbar-nav">
             <li><a href="../index.php"> Accueil</a></li>
             <li><a href="articles.php"> Liste des articles </a></li>
+            <li><a href="recettes.php"> Fiches recette </a></li>
           </ul>
           <ul class="nav navbar-nav navbar-right">
             <li><a href="signup.php"> S'inscrire </a></li>
-            <li><a href="signin.php"> se connecter </a></li>
+            <li><a href="signin.php"> Se connecter </a></li>
           </ul>
         </div>
       </div>
     </nav>
 
-		<div class="conteneur">
-			<h1 class="text-center"> Se connecter </h1>
-			<form action="" method="post">
-				<div class="form-group">
-					<label for="username"> Identifiant : </label>
-					<input type="text" name="Username" required id="username" class="form-control">
-				</div>
+<?php
+      $Username = htmlspecialchars($_POST['Username']);
+       $Password = htmlspecialchars($_POST['Password']);
+       $submit = $_POST['button'];
 
-				<div class="form-group">
-					<label for="password"> Mot de passe : </label>
-					<input type="password" name="Password" required id="password" class="form-control">
-				</div>
-				<button type="submit" name="button">Connexion</button>
-				<a href="signup.php">S'inscription ?</a>
-				<a href="#">Mot de passe oublié ?</a>
-			</form>
-		</div>
+       if ((isset($Username)) && (isset($Password)) && (isset($submit))){
+            // Si l'utilisateur remplit le formulaire et le valide
+            
+         $_SESSION['name'] = $Username;
+         $_SESSION['password'] = $Password;
+         $req->execute(array('name' => $Username,'password' => $Password));
 
+         $connecteduser = $req->fetch();
+        //si les identifiants de l'utilisateur ne figurent pas dans la base de données, on empêche la connexion et on le propose de s'inscrire
+        if (!$connecteduser) {
+          echo '<div class="alert alert-danger alert-dismissable"> <button type="button" class="close" data-dismiss="alert">&times;</button>
+           <strong> Utilisateur inconnu ! Vérifiez bien votre identifiant et votre mot de passe !
+            Sinon vous pouvez vous inscrire <a href="signup.php" class="alert-link"> ici </a> </strong> </div>';
+        }
+        else { // sinon, la session peut démarrer et l'utilisateur peut accéder à sa page membre personnelle
+          session_start();
+          $_SESSION['name'] = $connecteduser['name'];
+          $_SESSION['password'] = $connecteduser['password'];
+          header("Location: http://localhost/mini-CMS/views/page_membre.php");
+        }
+      }
+    ?>
 
+    <form class="mesonglet" method="post" action="">
+      <h2>Connexion </h2>
+      <div class="form-group">
+        <input class="form-control" class="D"  placeholder="Identifiant" type="text" name="Username" required>
+      </div>
+      <div class="form-group">
+        <input class="form-control"  placeholder="Mot de passe" type="password" name="Password" required>
+      </div>
+      <button type="submit" name="button">Connexion</button><br>
+      <a href="signup.php">Inscription ?</a>
+      <a href="#">Mot de passe oublié ?</a>
+    </form>
 
 </body>
 </html>
