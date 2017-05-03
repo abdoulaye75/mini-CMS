@@ -2,15 +2,23 @@
 
 include '../database/database.php';
 session_start();
-$user = $bdd->query("SELECT * FROM users");
-$delete_user = $user->fetch();
+
+if (isset($_GET['id'])) {
+	if (isset($_POST['submit'])) {
+		$deleteUser = $bdd->prepare("DELETE FROM users WHERE id = :id");
+		$deleteUser->execute(array('id' => $_GET['id']));
+
+		header("Location: http://localhost/mini-CMS/index.php");
+	}
+}
 
 ?>
 
 <!DOCTYPE html>
 <html>
 <head>
-	<title> Votre page membre </title>
+	<meta charset="utf-8">
+	<title> Supprimer mon compte </title>
 	<link rel="stylesheet" type="text/css" href="../CSS/bootstrap/css/bootstrap.min.css">
 </head>
 <body>
@@ -35,7 +43,7 @@ $delete_user = $user->fetch();
             <li> <?php if ((isset($_SESSION['name'])) && (isset($_SESSION['password']))) {
 				            echo '<a href="signout.php"> Se déconnecter </a>'; ?>
             </li>
-            <li> <?php echo '<a href="unsubscribe.php?id='.$delete_user['id'].'"> Supprimer mon compte </a>'; ?> </li>
+            <li> <?php echo '<a href="unsubscribe.php"> Supprimer mon compte </a>'; ?> </li>
 			        <?php   }else { ?>
 	    		  <li> <?php echo "<a href='signup.php'> S'inscrire </a>"; ?> </li>
 	          <li> <?php echo "<a href='signin.php'> se connecter </a>"; ?> </li>
@@ -47,18 +55,11 @@ $delete_user = $user->fetch();
       </div>
     </nav>
 
-    <?php
+    <h1 class="text-center"> Etes-vous sûr de vouloir supprimer votre compte ? Cette opération est irréversible </h1>
 
-	    if ((isset($_SESSION['name'])) && (isset($_SESSION['password']))) {
-			echo '<div class="alert alert-success alert-dismissable"> <button type="button" class="close" data-dismiss="alert">&times;</button>
-      <strong> Connexion réussie, '.$_SESSION['name'].' ! </strong></div>';
-		}
-    ?>
-
-    <ul>
-    	<li> <a href="articles.php"> Consulter les articles des recettes </a> </li>
-    	<li> <a href="create.php"> Créer un article de recette </a> </li>
-    </ul>
+    <form action="" method="post">
+    	<button type="submit" name="submit"> Supprimer mon compte </button>
+    </form>
 
 	<script src="../jquery-2.2.4.js"></script>
 	<script src="../CSS/bootstrap/js/bootstrap.min.js"></script>

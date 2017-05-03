@@ -4,6 +4,8 @@
   session_start();
 
   $reponse = $bdd->query('SELECT name FROM recettes');
+  $user = $bdd->query("SELECT * FROM users");
+  $delete_user = $user->fetch();
 
  ?>
 <!DOCTYPE html>
@@ -18,7 +20,7 @@
   </head>
   <body>
 
-  <nav class="navbar navbar-inverse">
+    <nav class="navbar navbar-inverse">
       <div class="container-fluid">
         <div class="navbar-header">
           <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
@@ -31,16 +33,16 @@
         <div class="collapse navbar-collapse" id="myNavbar">
           <ul class="nav navbar-nav">
             <li> <a href="index.php"> Accueil </a> </li>
-            <li> <?php if ((isset($_SESSION['name'])) && (isset($_SESSION['password']))) {
+            <li> <?php if (isset($_SESSION['name'], $_SESSION['password'])) {
         echo '<a href="views/create.php"> Ajouter une recette </a>'; ?>
       </li>
-      <li> <?php echo '<a href="views/update.php"> Modifier une recette </a>'; ?> </li>
       <li> <?php echo '<a href="views/signout.php"> Se déconnecter </a>'; ?> </li>
+      <li> <?php echo '<a href="views/unsubscribe.php?id='.$delete_user['id'].'"> Supprimer mon compte'; ?> </a> </li>
       <?php }
 
       else { ?>
         <li> <?php echo "<a href='views/signup.php'> S'inscrire </a>"; ?> </li>
-          <li> <?php echo "<a href='views/signin.php'> se connecter </a>"; ?> </li>
+        <li> <?php echo "<a href='views/signin.php'> se connecter </a>"; ?> </li>
 
       <?php }?>     
         <li> <a href="views/recettes.php"> Fiches recette </a> </li>

@@ -48,11 +48,12 @@ if (isset($_GET['id'])) {
         <div class="collapse navbar-collapse" id="myNavbar">
           <ul class="nav navbar-nav">
             <li> <a href="../index.php"> Retour à l'accueil </a> </li>
+            <li> <a href="recettes.php"> Fiches recette </a> </li>
             <li> <?php if ((isset($_SESSION['name'])) && (isset($_SESSION['password']))) {
 				echo '<a href="create.php"> Ajouter une recette </a>'; ?>
 			</li>
-			<li> <?php echo '<a href="update.php"> Modifier une recette </a>'; ?> </li>
 			<li> <?php echo '<a href="signout.php"> Se déconnecter </a>'; ?> </li>
+            <li> <?php echo '<a href="unsubscribe.php"> Supprimer mon compte </a>'; ?> </li>
 			<?php }
 
 			else { ?>
@@ -89,14 +90,9 @@ if (isset($_GET['id'])) {
 		<button type="submit" name="submit"> Modifier cette recette </button>
 	</form>
 
-	<section class="recap">
-		<h1> Récapitulatif de votre saisie : </h1>
-		<p> Nom de la recette : </p>
-		<p> Ingrédients : </p>
-		<p> Temps de préparation (en minutes) : </p>
-	</section>
-
 	<script src="../jquery-2.2.4.js"></script>
 	<script src="../CSS/bootstrap/js/bootstrap.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+	<script src="../js/app.js"></script>
 </body>
 </html>

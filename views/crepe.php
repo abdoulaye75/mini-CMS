@@ -32,6 +32,7 @@ session_start();
 			</li>
 			<li> <?php echo '<a href="update.php"> Modifier une recette </a>'; ?> </li>
 			<li> <?php echo '<a href="signout.php"> Se déconnecter </a>'; ?> </li>
+      <li> <?php echo '<a href="unsubscribe.php"> Supprimer mon compte </a>'; ?> </li>
 			<?php }
 
 			else { ?>

@@ -22,7 +22,7 @@ if (isset($name) && isset($ingredients) && isset($time) && isset($submit)) {
 ?>
 
 <!DOCTYPE html>
-<html>
+<html ng-app="myApp" ng-controller="myCtrl">
 <head>
 	<meta charset="utf-8">
 	<title> Ajouter une recette </title>
@@ -48,6 +48,7 @@ if (isset($name) && isset($ingredients) && isset($time) && isset($submit)) {
       </li>
       <li> <?php echo '<a href="update.php"> Modifier une recette </a>'; ?> </li>
       <li> <?php echo '<a href="signout.php"> Se déconnecter </a>'; ?> </li>
+      <li> <?php echo '<a href="unsubscribe.php"> Supprimer mon compte </a>'; ?> </li>
       <?php }
 
       else { ?>
@@ -65,17 +66,17 @@ if (isset($name) && isset($ingredients) && isset($time) && isset($submit)) {
 	<form action="" method="post" class="col-md-6">
     <div class="form-group">
   		<label for="name"> Nom de la recette : </label>
-      <input type="text" name="name" id="name" class="form-control">
+      <input type="text" name="name" id="name" class="form-control" ng-model="name">
     </div>
 
 		<div class="form-group">
       <label for="ingredients"> Ingrédients : </label>
-      <input type="text" name="ingredients" id="ingredients" class="form-control">
+      <input type="text" name="ingredients" id="ingredients" class="form-control" ng-model="ingredients">
     </div>
 
 		<div class="form-group">
       <label for="time"> Temps de préparation : </label>
-      <input type="duration" name="time" id="time" class="form-control" placeholder="ex: 01:00:00 pour 1 heure">
+      <input type="duration" name="time" id="time" class="form-control" placeholder="ex: 01:00:00 pour 1 heure" ng-model="time">
     </div>
 
 		<button type="submit" name="submit"> Ajouter cette nouvelle recette </button>
@@ -83,12 +84,14 @@ if (isset($name) && isset($ingredients) && isset($time) && isset($submit)) {
 
   <section class="recap">
     <h1> Récapitulatif de votre saisie : </h1>
-    <p> Nom de la recette : </p>
-    <p> Ingrédients : </p>
-    <p> Temps de préparation (en minutes) : </p>
+    <p> Nom de la recette : {{name}} </p>
+    <p> Ingrédients : {{ingredients}} </p>
+    <p> Temps de préparation (en minutes) : {{time}} </p>
   </section>
 
 	<script src="../jquery-2.2.4.js"></script>
 	<script src="../CSS/bootstrap/js/bootstrap.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+  <script src="../js/app.js"></script>
 </body>
 </html>
