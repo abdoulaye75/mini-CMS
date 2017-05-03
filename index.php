@@ -33,20 +33,19 @@
         <div class="collapse navbar-collapse" id="myNavbar">
           <ul class="nav navbar-nav">
             <li> <a href="index.php"> Accueil </a> </li>
-            <li> <?php if (isset($_SESSION['name'], $_SESSION['password'])) {
-        echo '<a href="views/create.php"> Ajouter une recette </a>'; ?>
-      </li>
-      <li> <?php echo '<a href="views/signout.php"> Se déconnecter </a>'; ?> </li>
-      <li> <?php echo '<a href="views/unsubscribe.php?id='.$delete_user['id'].'"> Supprimer mon compte'; ?> </a> </li>
-      <?php }
+            <?php if (isset($_SESSION['name'], $_SESSION['password'])) { ?>
+            <li> <?php echo '<a href="views/create.php"> Ajouter une recette </a>'; ?> </li>
+            <li> <?php echo '<a href="views/signout.php"> Se déconnecter </a>'; ?> </li>
+            <li> <?php echo '<a href="views/unsubscribe.php?id='.$delete_user['id'].'"> Supprimer mon compte'; ?> </a> </li>
+            <?php }
 
-      else { ?>
-        <li> <?php echo "<a href='views/signup.php'> S'inscrire </a>"; ?> </li>
-        <li> <?php echo "<a href='views/signin.php'> se connecter </a>"; ?> </li>
+            else { ?>
+              <li> <?php echo "<a href='views/signup.php'> S'inscrire </a>"; ?> </li>
+              <li> <?php echo "<a href='views/signin.php'> se connecter </a>"; ?> </li>
 
-      <?php }?>     
-        <li> <a href="views/recettes.php"> Fiches recette </a> </li>
-        <li> <a href="views/articles.php"> Liste des articles </a> </li>
+            <?php }?>     
+              <li> <a href="views/recettes.php"> Fiches recette </a> </li>
+              <li> <a href="views/articles.php"> Liste des articles </a> </li>
           </ul>
         </div>
       </div>
