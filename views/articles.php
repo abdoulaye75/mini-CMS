@@ -64,8 +64,10 @@ $delete_user = $user->fetch();
 				<th> Nom du plat </th>
 				<th> Ingrédients </th>
 				<th> Temps de préparation (en minutes) </th>
-				<th> Modifier un article </th>
-				<th> Supprimer un article </th>
+				<?php if ((isset($_SESSION['name'])) && (isset($_SESSION['password']))) { ?>
+					<th> Modifier un article </th>
+					<th> Supprimer un article </th>
+				<?php } ?>
 			</tr>
 		</thead>
 
@@ -77,6 +79,7 @@ $delete_user = $user->fetch();
 				<td> <?php echo '<a href="">'.$donnees['name'].'</a>'; ?> </td>
 				<td> <?php echo $donnees['ingredients']; ?> </td>
 				<td> <?php echo $donnees['preparation_time']; ?> </td>
+				<?php if ((isset($_SESSION['name'])) && (isset($_SESSION['password']))) { ?>
 				<td> <?php $modifiedrecipes = array($donnees);
 			        foreach ($modifiedrecipes as $modifiedrecipe) {
 			          echo '<a href="update.php?id='.$donnees['id'].'"> <i class="material-icons">edit</i> Modifier la recette </a>';
@@ -87,6 +90,7 @@ $delete_user = $user->fetch();
 		        	echo '<a href="delete.php?id='.$donnees['id'].'" style="color:red;"> <i class="material-icons">delete</i> Supprimer la recette </a>';
 		        }
 		        ?> </td>
+		        <?php } ?>
 			</tr>
 			<?php 
     		} $reponse->closeCursor();
