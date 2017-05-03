@@ -9,7 +9,7 @@ include '../database/database.php';
 
    if ((isset($Username)) && (isset($Password)) && (isset($submit))){
         // Si l'utilisateur remplit le formulaire et le valide
-        
+
      $_SESSION['name'] = $Username;
      $_SESSION['password'] = $Password;
      $req->execute(array('name' => $Username,'password' => $Password));
@@ -27,7 +27,7 @@ include '../database/database.php';
       header("Location: http://localhost/mini-CMS/views/page_membre.php");
     }
   }
-  
+
 ?>
 
 <!DOCTYPE html>
@@ -38,7 +38,7 @@ include '../database/database.php';
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-	<link rel="stylesheet" type="text/css" href="../CSS/accueil.css">
+	<link rel="stylesheet" type="text/css" href="../CSS/signup.css">
 </head>
 <body>
 
@@ -65,18 +65,25 @@ include '../database/database.php';
       </div>
     </nav>
 
-    <form class="mesonglet" method="post" action="">
-      <h2>Connexion </h2>
-      <div class="form-group">
-        <input class="form-control" class="D"  placeholder="Username" type="text" name="Username" value=""><br>
-      </div>
-      <div class="form-group">
-        <input class="form-control"  placeholder="Password" type="password" name="Password" value="">
-      </div>
-      <button type="submit" name="button">Connexion</button><br>
-      <a href="signup.php">Inscription ?</a>
-      <a href="#">Mot de passe oublié ?</a>
-    </form>
+		<div class="conteneur">
+			<h1 class="text-center"> Se connecter </h1>
+			<form action="" method="post">
+				<div class="form-group">
+					<label for="username"> Identifiant : </label>
+					<input type="text" name="Username" required id="username" class="form-control">
+				</div>
+
+				<div class="form-group">
+					<label for="password"> Mot de passe : </label>
+					<input type="password" name="Password" required id="password" class="form-control">
+				</div>
+				<button type="submit" name="button">Connexion</button>
+				<a href="signup.php">S'inscription ?</a>
+				<a href="#">Mot de passe oublié ?</a>
+			</form>
+		</div>
+
+
 
 </body>
 </html>

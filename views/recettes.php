@@ -6,15 +6,12 @@ include 'database/database.php';
 ?>
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8">
-    <title>gateau au chocolat</title>
-    <link rel="stylesheet" type="text/css" href="../CSS/gateau.css">
+<head>
+	<meta charset="utf-8">
+	<title> Fiches recette </title>
 	<link rel="stylesheet" type="text/css" href="../CSS/bootstrap/css/bootstrap.min.css">
-  </head>
-  <body>
-
-	<nav class="navbar navbar-inverse">
+</head>
+<body><nav class="navbar navbar-inverse">
       <div class="container-fluid">
         <div class="navbar-header">
           <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
@@ -45,11 +42,15 @@ include 'database/database.php';
       </div>
     </nav>
 
-    <p>Pour faire un gateau il faut !</p>
-    <p>farine, oeufs, lait, sel, sucre vanillé, sucre en poudre</p>
-    <img src="../img/cake_chocolate.jpeg" alt="gâteau au chocolat">
+    <ul>
+    	<li> <a href="crepe.php"> Fiche crêpe </a> </li>
+    	<li> <a href="gateau.php"> Gâteau au chocolat </a> </li>
+    	<li> <a href="madeleine.php"> Madeleine </a> </li>
+    	<li> <a href="pommesdeterre.php"> Purée de pommes de terre </a> </li>
+    	<li> <a href="potaufeu.php"> Pot au feu </a> </li>
+    </ul>
 
-  	<script src="../jquery-2.2.4.js"></script>
+	<script src="../jquery-2.2.4.js"></script>
 	<script src="../CSS/bootstrap/js/bootstrap.min.js"></script>
-  </body>
+</body>
 </html>
