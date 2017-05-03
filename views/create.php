@@ -4,21 +4,6 @@ session_start();
 
 include '../database/database.php';
 
-$recette = $bdd->query("SELECT * FROM recettes");
-
-$name = htmlspecialchars($_POST['name']);
-$ingredients = htmlspecialchars($_POST['ingredients']);
-$time = htmlspecialchars($_POST['time']);
-$submit = $_POST['submit'];
-
-if (isset($name) && isset($ingredients) && isset($time) && isset($submit)) {
-	$req = $bdd->prepare("INSERT INTO recettes (name, ingredients, preparation_time) VALUES (?, ?, ?)");
-
-	$req->execute(array($name, $ingredients, $time));
-
-	echo "La recette a été ajoutée avec succès";
-}
-
 ?>
 
 <!DOCTYPE html>
@@ -36,7 +21,7 @@ if (isset($name) && isset($ingredients) && isset($time) && isset($submit)) {
           <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
-            <span class="icon-bar"></span>                        
+            <span class="icon-bar"></span>
           </button>
 
         </div>
@@ -55,14 +40,32 @@ if (isset($name) && isset($ingredients) && isset($time) && isset($submit)) {
         <li> <?php echo "<a href='signup.php'> S'inscrire </a>"; ?> </li>
           <li> <?php echo "<a href='signin.php'> se connecter </a>"; ?> </li>
 
-      <?php }?>     
-        <li> <a href="recettes.php"> Fiches recette </a> </li>
+      <?php }?>
+          <li> <a href="recettes.php"> Fiches recette </a> </li>
         <li> <a href="articles.php"> Liste des articles </a> </li>
           </ul>
         </div>
       </div>
     </nav>
 
+<?php
+		$recette = $bdd->query("SELECT * FROM recettes");
+
+		$name = htmlspecialchars($_POST['name']);
+		$ingredients = htmlspecialchars($_POST['ingredients']);
+		$time = htmlspecialchars($_POST['time']);
+		$submit = $_POST['submit'];
+
+		if (isset($name) && isset($ingredients) && isset($time) && isset($submit)) {
+		$req = $bdd->prepare("INSERT INTO recettes (name, ingredients, preparation_time) VALUES (?, ?, ?)");
+
+		$req->execute(array($name, $ingredients, $time));
+
+		echo '<div class="alert alert-success alert-dismissable"><button type="button" class="close" data-dismiss="alert">&times;
+			</button>La recette a été ajoutée avec succès</div>';
+	}
+
+  ?>
 	<form action="" method="post" class="col-md-6">
     <div class="form-group">
   		<label for="name"> Nom de la recette : </label>
@@ -71,12 +74,12 @@ if (isset($name) && isset($ingredients) && isset($time) && isset($submit)) {
 
 		<div class="form-group">
       <label for="ingredients"> Ingrédients : </label>
-      <input type="text" name="ingredients" id="ingredients" class="form-control" ng-model="ingredients">
+      <input required type="text" name="ingredients" id="ingredients" class="form-control" ng-model="ingredients">
     </div>
 
 		<div class="form-group">
       <label for="time"> Temps de préparation : </label>
-      <input type="duration" name="time" id="time" class="form-control" placeholder="ex: 01:00:00 pour 1 heure" ng-model="time">
+      <input required type="duration" name="time" id="time" class="form-control" placeholder="ex: 01:00:00 pour 1 heure" ng-model="time">
     </div>
 
 		<button type="submit" name="submit"> Ajouter cette nouvelle recette </button>
@@ -84,6 +87,7 @@ if (isset($name) && isset($ingredients) && isset($time) && isset($submit)) {
 
   <section class="recap">
     <h1> Récapitulatif de votre saisie : </h1>
+
     <p> Nom de la recette : {{name}} </p>
     <p> Ingrédients : {{ingredients}} </p>
     <p> Temps de préparation (en minutes) : {{time}} </p>
