@@ -21,7 +21,7 @@
         <div class="collapse navbar-collapse" id="myNavbar">
           <ul class="nav navbar-nav">
             <li> <a href="index2.php"> Accueil </a> </li>
-            <li> <?php if ((isset($_SESSION['name'])) && (isset($_SESSION['password']))) {
+            <li> <?php if ($user_is_connected) {
 				echo '<a href="views/create.php"> Ajouter une recette </a>'; ?>
 			</li>
 			<li> <?php echo '<a href="views/update.php"> Modifier une recette </a>'; ?> </li>
