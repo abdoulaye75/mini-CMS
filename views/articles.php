@@ -14,6 +14,7 @@ $delete_user = $user->fetch();
 	<title> Les articles </title>
 	<link rel="stylesheet" type="text/css" href="../CSS/articles.css">
 	<link rel="stylesheet" type="text/css" href="../CSS/bootstrap/css/bootstrap.min.css">
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 </head>
 <body>
 
@@ -43,7 +44,7 @@ $delete_user = $user->fetch();
 
 			<?php }?>    	
     		<li> <a href="recettes.php"> Fiches recette </a> </li>
-    		<li> <a href="views/articles.php"> Liste des articles </a> </li>
+    		<li> <a href="articles.php"> Liste des articles </a> </li>
           </ul>
         </div>
       </div>
@@ -78,12 +79,12 @@ $delete_user = $user->fetch();
 				<td> <?php echo $donnees['preparation_time']; ?> </td>
 				<td> <?php $modifiedrecipes = array($donnees);
 			        foreach ($modifiedrecipes as $modifiedrecipe) {
-			          echo '<a href="update.php?id='.$donnees['id'].'"> Modifier la recette </a>';
+			          echo '<a href="update.php?id='.$donnees['id'].'"> <i class="material-icons">edit</i> Modifier la recette </a>';
 			        } ?>
 		        </td>
 		        <td> <?php $recipes = array($donnees);
 		        foreach ($recipes as $recipe) {
-		        	echo '<a href="delete.php?id='.$donnees['id'].'"> Supprimer la recette </a>';
+		        	echo '<a href="delete.php?id='.$donnees['id'].'" style="color:red;"> <i class="material-icons">delete</i> Supprimer la recette </a>';
 		        }
 		        ?> </td>
 			</tr>
