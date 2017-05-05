@@ -38,7 +38,7 @@ include '../database/database.php';
 	<form action="" method="post" class="col-md-6">
     <div class="form-group">
   		<label for="name"> Nom de la recette : </label>
-      <input type="text" name="name" id="name" class="form-control" ng-model="name">
+      <input type="text" name="name" id="name" class="form-control" ng-model="name" required>
     </div>
 
 		<div class="form-group">
