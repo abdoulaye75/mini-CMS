@@ -32,7 +32,7 @@ $user_is_connected = isset($_SESSION['name'], $_SESSION['password']);
             <li> <a href="index.php"> Accueil </a> </li>
             <?php if ($user_is_connected) { ?>
                 <li> <?php echo '<a href="signout.php"> Se déconnecter </a>'; ?> </li>
-                <li> <?php echo '<a href="settings.php"> Paramètres du compte </a>'; ?> </li>
+                <li> <?php echo '<a href="settings.php?name='.$_SESSION['name'].'"> Paramètres du compte </a>'; ?> </li>
                 <?php }
 
       			else { ?>
