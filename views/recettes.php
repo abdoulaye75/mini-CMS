@@ -11,37 +11,9 @@ include 'database/database.php';
 	<title> Fiches recette </title>
 	<link rel="stylesheet" type="text/css" href="../CSS/bootstrap/css/bootstrap.min.css">
 </head>
-<body><nav class="navbar navbar-inverse">
-      <div class="container-fluid">
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>                        
-          </button>
+<body>
 
-        </div>
-        <div class="collapse navbar-collapse" id="myNavbar">
-          <ul class="nav navbar-nav">
-            <li> <a href="../index.php"> Retour à l'accueil </a> </li>
-            <li> <?php if ((isset($_SESSION['name'])) && (isset($_SESSION['password']))) {
-				echo '<a href="create.php"> Ajouter une recette </a>'; ?>
-			</li>
-			<li> <?php echo '<a href="update.php"> Modifier une recette </a>'; ?> </li>
-			<li> <?php echo '<a href="signout.php"> Se déconnecter </a>'; ?> </li>
-      <li> <?php echo '<a href="unsubscribe.php"> Supprimer mon compte </a>'; ?> </li>
-			<?php }
-
-			else { ?>
-	    	<li> <?php echo "<a href='signup.php'> S'inscrire </a>"; ?> </li>
-	        <li> <?php echo "<a href='signin.php'> se connecter </a>"; ?> </li>
-
-			<?php }?>    	
-    		<li> <a href="recettes.php"> Fiches recette </a> </li>
-          </ul>
-        </div>
-      </div>
-    </nav>
+  <?php include 'nav.php'; ?>
 
     <ul>
     	<li> <a href="crepe.php"> Fiche crêpe </a> </li>

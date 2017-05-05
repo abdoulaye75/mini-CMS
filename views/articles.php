@@ -2,8 +2,6 @@
 
 include '../database/database.php';
 session_start();
-$user = $bdd->query("SELECT * FROM users");
-$delete_user = $user->fetch();
 
 ?>
 
@@ -15,46 +13,23 @@ $delete_user = $user->fetch();
 	<link rel="stylesheet" type="text/css" href="../CSS/articles.css">
 	<link rel="stylesheet" type="text/css" href="../CSS/bootstrap/css/bootstrap.min.css">
 	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body>
 
-  	<nav class="navbar navbar-inverse">
-      <div class="container-fluid">
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>                        
-          </button>
-
-        </div>
-        <div class="collapse navbar-collapse" id="myNavbar">
-          <ul class="nav navbar-nav">
-            <li> <a href="../index.php"> Retour à l'accueil </a> </li>
-            <li> <?php if ((isset($_SESSION['name'])) && (isset($_SESSION['password']))) {
-				echo '<a href="create.php"> Ajouter une recette </a>'; ?>
-			</li>
-			<li> <?php echo '<a href="signout.php"> Se déconnecter </a>'; ?> </li>
-            <li> <?php echo '<a href="unsubscribe.php?id='.$delete_user['id'].'"> Supprimer mon compte </a>'; ?> </li>
-			<?php }
-
-			else { ?>
-	    	<li> <?php echo "<a href='signup.php'> S'inscrire </a>"; ?> </li>
-	        <li> <?php echo "<a href='signin.php'> se connecter </a>"; ?> </li>
-
-			<?php }?>    	
-    		<li> <a href="recettes.php"> Fiches recette </a> </li>
-    		<li> <a href="articles.php"> Liste des articles </a> </li>
-          </ul>
-        </div>
-      </div>
-    </nav>
+  <?php include 'nav.php'; ?>
 
     <?php
 
   		include '../database/database.php';
 
   		$reponse = $bdd->query('SELECT * FROM recettes');
+
+  		$user_is_connected = isset($_SESSION['name'], $_SESSION['password']);
+
+  		if ($user_is_connected) {
+  			echo '<a href="create.php" class="btn btn-success">	<span class="glyphicon">&#x2b;</span> Ajouter une recette </a>';
+  		}
 
  	?>
 
@@ -64,7 +39,7 @@ $delete_user = $user->fetch();
 				<th> Nom du plat </th>
 				<th> Ingrédients </th>
 				<th> Temps de préparation (en minutes) </th>
-				<?php if ((isset($_SESSION['name'])) && (isset($_SESSION['password']))) { ?>
+				<?php if ($user_is_connected) { ?>
 					<th> Modifier un article </th>
 					<th> Supprimer un article </th>
 				<?php } ?>

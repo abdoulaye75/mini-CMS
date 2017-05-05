@@ -29,7 +29,7 @@ include '../database/database.php';
         </div>
         <div class="collapse navbar-collapse" id="myNavbar">
           <ul class="nav navbar-nav">
-            <li><a href="../index.php"> Accueil</a></li>
+            <li><a href="index.php"> Accueil</a></li>
             <li><a href="articles.php"> Liste des articles </a></li>
             <li><a href="recettes.php"> Fiches recette </a></li>
           </ul>
@@ -73,10 +73,12 @@ include '../database/database.php';
       <h1 class="text-center">Connexion </h1> 
       <form class="mesonglet" method="post" action="">
         <div class="form-group">
-          <input class="form-control" class="D"  placeholder="Identifiant" type="text" name="Username" required>
+          <label for="name"> Identifiant : </label>
+          <input class="form-control" class="D"  placeholder="Identifiant" id="name" type="text" name="Username" required>
         </div>
         <div class="form-group">
-          <input class="form-control"  placeholder="Mot de passe" type="password" name="Password" required>
+          <label for="password"> Mot de passe : </label>
+          <input class="form-control"  placeholder="Mot de passe" id="password" type="password" name="Password" required>
         </div>
         <button type="submit" name="button">Connexion</button>
         <a href="signup.php">S'inscrire ?</a>

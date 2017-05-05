@@ -7,7 +7,7 @@ include '../database/database.php';
 ?>
 
 <!DOCTYPE html>
-<html>
+<html ng-app="myApp" ng-controller="myCtrl">
 <head>
 	<meta charset="utf-8">
 	<title> Ajouter une recette </title>
@@ -15,38 +15,7 @@ include '../database/database.php';
 </head>
 <body>
 
-  <nav class="navbar navbar-inverse">
-      <div class="container-fluid">
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-
-        </div>
-        <div class="collapse navbar-collapse" id="myNavbar">
-          <ul class="nav navbar-nav">
-            <li> <a href="../index.php"> Retour à l'accueil </a> </li>
-            <li> <?php if ((isset($_SESSION['name'])) && (isset($_SESSION['password']))) {
-        echo '<a href="create.php"> Ajouter une recette </a>'; ?>
-      </li>
-      <li> <?php echo '<a href="update.php"> Modifier une recette </a>'; ?> </li>
-      <li> <?php echo '<a href="signout.php"> Se déconnecter </a>'; ?> </li>
-      <li> <?php echo '<a href="unsubscribe.php"> Supprimer mon compte </a>'; ?> </li>
-      <?php }
-
-      else { ?>
-        <li> <?php echo "<a href='signup.php'> S'inscrire </a>"; ?> </li>
-          <li> <?php echo "<a href='signin.php'> se connecter </a>"; ?> </li>
-
-      <?php }?>
-          <li> <a href="recettes.php"> Fiches recette </a> </li>
-        <li> <a href="articles.php"> Liste des articles </a> </li>
-          </ul>
-        </div>
-      </div>
-    </nav>
+  <?php include 'nav.php'; ?>
 
 <?php
 		$recette = $bdd->query("SELECT * FROM recettes");
@@ -82,9 +51,18 @@ include '../database/database.php';
       <input required type="duration" name="time" id="time" class="form-control" placeholder="ex: 01:00:00 pour 1 heure" ng-model="time">
     </div>
 
-		<button type="submit" name="submit"> Ajouter cette nouvelle recette </button>
+		<button type="submit" name="submit" class="btn btn-primary"> Ajouter cette nouvelle recette </button>
 	</form>
+
+  <section>
+    <h1> Votre saisie : </h1>
+    <p> Nom de la recette : {{name}} </p>
+    <p> Ingrédients : {{ingredients}} </p>
+    <p> Temps de préparation : {{time}} </p>
+  </section>
 
 	<script src="../jquery-2.2.4.js"></script>
 	<script src="../CSS/bootstrap/js/bootstrap.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+  <script src="../js/app.js"></script>
 </html>

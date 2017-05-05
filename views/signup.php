@@ -40,7 +40,7 @@
         </div>
         <div class="collapse navbar-collapse" id="myNavbar">
           <ul class="nav navbar-nav">
-            <li><a href="../index.php"> Accueil</a></li>            
+            <li><a href="index.php"> Accueil</a></li>            
             <li><a href="articles.php"> Liste des articles </a></li>
             <li><a href="recettes.php"> Fiches recette </a></li>
           </ul>
