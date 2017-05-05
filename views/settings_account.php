@@ -1,4 +1,9 @@
 <?php
+
+session_start();
+
+include("../database/database.php");
+
 	$name = htmlspecialchars($_POST['name']);
 	$password = htmlspecialchars($_POST['password']);
 
@@ -9,7 +14,6 @@
 
 		$nvname = $name;
 		$nvpassword = $password;
-		$submit = $_POST['submit'];
 
 		$req->execute(array('nvname' => $nvname, 'nvpassword' => $nvpassword, 'name' => $_GET['name']));
 		echo '<div class="alert alert-success alert-dismissable"><button type="button" class="close" data-dismiss="alert">&times;
@@ -18,3 +22,4 @@
 	}
 	$modification = $bdd->prepare("SELECT * FROM users WHERE name = :name");
 	$modification->execute(array('name' => $_GET['name']));
+?>
