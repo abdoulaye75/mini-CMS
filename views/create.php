@@ -43,7 +43,7 @@ include '../database/database.php';
 
 		<div class="form-group">
       <label for="ingredients"> Ingrédients : </label>
-      <input required type="text" name="ingredients" id="ingredients" class="form-control" ng-model="ingredients">
+      <textarea required type="text" name="ingredients" id="ingredients" class="form-control" ng-model="ingredients"></textarea>
     </div>
 
 		<div class="form-group">

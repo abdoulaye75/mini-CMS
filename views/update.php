@@ -26,7 +26,7 @@ include("../database/database.php");
 
 		<div class="form-group">
 			<label for="ingredients"> Ingrédients : </label>
-			<input required type="text" class="form-control" name="ingredients" id="ingredients" value="<?php echo $field['ingredients'] ?>">
+			<textarea required type="text" class="form-control" name="ingredients" id="ingredients"><?php echo $field['ingredients'] ?></textarea>
 		</div>
 
 		<div class="form-group">
